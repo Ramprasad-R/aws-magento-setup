@@ -11,6 +11,7 @@ resource "aws_s3_bucket" "media-bucket" {
     allowed_methods = ["PUT", "POST", "GET", "HEAD", "DELETE"]
     allowed_origins = ["*"]
     expose_headers  = []
+    max_age_seconds = 3000
   }
 }
 
@@ -50,6 +51,7 @@ resource "aws_s3_bucket" "static-bucket" {
     allowed_methods = ["PUT", "POST", "GET", "HEAD", "DELETE"]
     allowed_origins = ["*"]
     expose_headers  = []
+    max_age_seconds = 3000
   }
 }
 
