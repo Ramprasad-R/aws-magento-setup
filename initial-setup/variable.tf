@@ -23,3 +23,7 @@ variable "RDS_PASSWORD" {}
 variable "RDS_INSTANCE_CLASS" {}
 
 variable "DEVELOPER_ADDR" {}
+
+variable "REDIS_INSTANCE_TYPE" {}
+
+variable "ES_INSTANCE_TYPE" {}

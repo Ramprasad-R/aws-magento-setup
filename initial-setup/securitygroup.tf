@@ -1,6 +1,6 @@
 resource "aws_security_group" "web-app-sg" {
   vpc_id = aws_vpc.magento.id
-  name   = "allow-ssh"
+  name   = "web-app-sg"
   egress {
     from_port   = 0
     to_port     = 0

@@ -20,7 +20,7 @@ resource "aws_db_instance" "magento" {
   storage_type            = "gp2"
   backup_retention_period = 30
   availability_zone       = aws_subnet.magento-private-1.availability_zone
-  skip_final_snapshot     = true 
+  skip_final_snapshot     = true
   tags = {
     Name = "magento-rds-instance"
   }
