@@ -12,3 +12,8 @@ variable "S3_STATIC_BUCKET" {}
 variable "CDN_ACM_CERT_ARN" {}
 variable "CDN_FQDN_MEDIA_ALIAS" {}
 variable "CDN_FQDN_STATIC_ALIAS" {}
+
+variable "CDN_MEDIA_DOMAIN" {}
+variable "CDN_STATIC_DOMAIN" {}
+
+variable "DOMAIN_ZONE_ID" {}

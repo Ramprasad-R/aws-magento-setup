@@ -10,9 +10,9 @@ resource "aws_cloudfront_distribution" "media" {
   aliases = [var.CDN_FQDN_MEDIA_ALIAS]
 
   default_cache_behavior {
-    allowed_methods        = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
-    cached_methods         = ["GET", "HEAD"]
-    target_origin_id       = "S3-${aws_s3_bucket.media-bucket.id}"
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = "S3-${aws_s3_bucket.media-bucket.id}"
     forwarded_values {
       query_string = false
 
@@ -34,8 +34,8 @@ resource "aws_cloudfront_distribution" "media" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = var.CDN_ACM_CERT_ARN
-    ssl_support_method = "sni-only"
+    acm_certificate_arn      = var.CDN_ACM_CERT_ARN
+    ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1"
   }
 }
@@ -52,9 +52,9 @@ resource "aws_cloudfront_distribution" "static" {
   aliases = [var.CDN_FQDN_STATIC_ALIAS]
 
   default_cache_behavior {
-    allowed_methods        = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
-    cached_methods         = ["GET", "HEAD"]
-    target_origin_id       = "S3-${aws_s3_bucket.static-bucket.id}"
+    allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
+    cached_methods   = ["GET", "HEAD"]
+    target_origin_id = "S3-${aws_s3_bucket.static-bucket.id}"
     forwarded_values {
       query_string = false
 
@@ -76,8 +76,8 @@ resource "aws_cloudfront_distribution" "static" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = var.CDN_ACM_CERT_ARN
-    ssl_support_method = "sni-only"
+    acm_certificate_arn      = var.CDN_ACM_CERT_ARN
+    ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1"
   }
 }
