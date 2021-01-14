@@ -26,3 +26,15 @@ resource "aws_route53_record" "cdn-static-domain" {
   }
 }
 
+resource "aws_route53_record" "webapp" {
+  zone_id = var.DOMAIN_ZONE_ID ## aws_route53_zone.main-domain.zone_id
+  name    = var.WEB_APP_DOMAIN
+  type    = "A"
+
+  alias {
+    name                   = module.alb.this_lb_dns_name
+    zone_id                = module.alb.this_lb_zone_id
+    evaluate_target_health = false
+  }
+}
+

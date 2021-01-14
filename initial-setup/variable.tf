@@ -27,3 +27,20 @@ variable "DEVELOPER_ADDR" {}
 variable "REDIS_INSTANCE_TYPE" {}
 
 variable "ES_INSTANCE_TYPE" {}
+
+variable "ALB_LOG_BUCKET" {}
+
+variable "ELB_ACCOUNT_ID" {
+  default = {
+    us-east-1    = 127311923021
+    us-east-2    = 033677994240
+    us-west-2    = 797873946194
+    eu-west-1    = 156460612806
+    eu-central-1 = 054676820928
+    eu-west-3    = 009996457667
+  }
+}
+
+variable "AWS_ACCOUNT_ID" {}
+
+variable "WEB_APP_DOMAIN" {}
