@@ -17,3 +17,9 @@ variable "CDN_MEDIA_DOMAIN" {}
 variable "CDN_STATIC_DOMAIN" {}
 
 variable "DOMAIN_ZONE_ID" {}
+
+variable "RDS_USERNAME" {}
+variable "RDS_PASSWORD" {}
+variable "RDS_INSTANCE_CLASS" {}
+
+variable "DEVELOPER_ADDR" {}
