@@ -31,5 +31,8 @@ override.tf.json
 # example: *tfplan*
 
 **s3_bucket_name.txt
-**output.txt
+**output.*
 **magentokey*
+**env*
+!**env.php.j2
+**infra.json

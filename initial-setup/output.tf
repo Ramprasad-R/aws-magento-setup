@@ -2,6 +2,10 @@ output "base_url" {
   value = "https://${aws_route53_record.webapp.fqdn}/"
 }
 
+output "base_url_domain" {
+  value = aws_route53_record.webapp.fqdn
+}
+
 output "media_base_url" {
   value = "https://${aws_route53_record.cdn-media-domain.fqdn}/"
 }

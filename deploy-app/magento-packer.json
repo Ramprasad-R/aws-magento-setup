@@ -1,0 +1,37 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": "",
+    "aws_region": ""
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "{{user `aws_region`}}",
+      "source_ami": "ami-0502e817a62226e03",
+      "instance_type": "t2.medium",
+      "ssh_username": "ubuntu",
+      "ami_name": "magento-v1-{{timestamp}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "env.php.j2",
+      "destination": "/tmp/env.php.j2"
+    },
+    {
+      "type": "shell",
+      "scripts": ["scripts/magento-setup.sh"],
+      "environment_vars": [
+        "USER_NAME={{user `USER_NAME`}}",
+        "PASSWORD={{user `PASSWORD`}}",
+        "base_url={{user `base_url`}}"
+      ],
+      "execute_command": "{{ .Vars }} sudo -E sh '{{ .Path }}'",
+      "pause_before": "10s"
+    }
+  ]
+}
