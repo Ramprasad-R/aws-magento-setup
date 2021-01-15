@@ -68,3 +68,16 @@ resource "aws_security_group" "magento-mysql-sg" {
   }
 }
 
+resource "aws_security_group" "es-sg" {
+  name   = "es-sg"
+  vpc_id = aws_vpc.magento.id
+
+  ingress {
+    from_port = 443
+    to_port   = 443
+    protocol  = "tcp"
+    cidr_blocks = [
+      aws_vpc.magento.cidr_block,
+    ]
+  }
+}

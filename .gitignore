@@ -31,3 +31,4 @@ override.tf.json
 # example: *tfplan*
 
 **s3_bucket_name.txt
+**output.txt
