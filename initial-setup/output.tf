@@ -18,6 +18,14 @@ output "redis_port" {
   value = aws_elasticache_cluster.magento.cache_nodes[0].port
 }
 
-output "elasticsearch_endpoint" {
-  value = aws_elasticsearch_domain.magento-es.endpoint
+output "elastic_search_endpoint" {
+  value = "https://${aws_elasticsearch_domain.magento-es.endpoint}"
+}
+
+output "mysql_host" {
+  value = aws_db_instance.magento.address
+}
+
+output "jump_server" {
+  value = aws_instance.jump-server.public_ip
 }

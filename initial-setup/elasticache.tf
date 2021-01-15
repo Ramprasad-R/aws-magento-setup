@@ -4,6 +4,6 @@ resource "aws_elasticache_cluster" "magento" {
   node_type            = var.REDIS_INSTANCE_TYPE
   num_cache_nodes      = 1
   parameter_group_name = "default.redis6.x"
-  engine_version       = "6.0.5"
+  engine_version       = "6.0.5" #https://github.com/hashicorp/terraform-provider-aws/issues/15625
   port                 = 6379
 }

@@ -31,7 +31,7 @@ resource "aws_security_group" "alb-sg" {
   }
 
   dynamic "ingress" {
-    for_each = [22, 443]
+    for_each = [80, 443]
     content {
       from_port       = ingress.value
       to_port         = ingress.value
@@ -52,8 +52,8 @@ resource "aws_security_group" "magento-mysql-sg" {
     from_port       = 3306
     to_port         = 3306
     protocol        = "tcp"
-    security_groups = [aws_security_group.web-app-sg.id]
-    cidr_blocks     = [var.DEVELOPER_ADDR] # Remove for production instance
+    security_groups = [aws_security_group.web-app-sg.id, ]
+    cidr_blocks     = [aws_vpc.magento.cidr_block]
   }
 
   egress {
@@ -79,5 +79,39 @@ resource "aws_security_group" "es-sg" {
     cidr_blocks = [
       aws_vpc.magento.cidr_block,
     ]
+  }
+}
+
+resource "aws_security_group" "jumpserver-sg" {
+  vpc_id = aws_vpc.magento.id
+  name   = "jumpserver-sg"
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = [var.DEVELOPER_ADDR]
+    self        = true
+  }
+
+  dynamic "ingress" {
+    for_each = [80, 443]
+    content {
+      from_port       = ingress.value
+      to_port         = ingress.value
+      protocol        = "tcp"
+      cidr_blocks     = ["0.0.0.0/0"]
+      security_groups = [aws_security_group.web-app-sg.id]
+    }
+  }
+
+  tags = {
+    Name = "jumpserver-sg"
   }
 }

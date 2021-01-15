@@ -44,3 +44,23 @@ variable "ELB_ACCOUNT_ID" {
 variable "AWS_ACCOUNT_ID" {}
 
 variable "WEB_APP_DOMAIN" {}
+
+variable "JUMPSERVER_INSTANCE_TYPE" {
+  default = "t3a.medium"
+}
+
+variable "PUBLIC_KEY" {
+  default = "magentokey.pub"
+}
+
+variable "ARTIFACT_USER" {}
+variable "ARTIFACT_PASSWORD" {}
+variable "SQL_ARTIFACT_URL" {}
+
+variable "AMIS" {
+  type = map(string)
+  default = {
+    eu-central-1 ="ami-0502e817a62226e03"
+    us-east-2 = "ami-0a91cd140a1fc148a"
+  }
+}

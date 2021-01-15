@@ -4,6 +4,17 @@ resource "aws_db_subnet_group" "mysql-subnet" {
   subnet_ids  = [aws_subnet.magento-private-1.id, aws_subnet.magento-private-2.id, aws_subnet.magento-private-3.id]
 }
 
+resource "aws_db_parameter_group" "mysql-parameters" {
+  name        = "mysql-parameters"
+  family      = "mysql8.0"
+  description = "MysqlDB parameter group"
+
+  parameter {
+    name  = "log_bin_trust_function_creators"
+    value = "1"
+  }
+}
+
 resource "aws_db_instance" "magento" {
   allocated_storage       = 100
   engine                  = "mysql"
@@ -14,7 +25,7 @@ resource "aws_db_instance" "magento" {
   username                = var.RDS_USERNAME
   password                = var.RDS_PASSWORD
   db_subnet_group_name    = aws_db_subnet_group.mysql-subnet.name
-  parameter_group_name    = "default.mysql8.0"
+  parameter_group_name    = aws_db_parameter_group.mysql-parameters.name
   multi_az                = "false"
   vpc_security_group_ids  = [aws_security_group.magento-mysql-sg.id]
   storage_type            = "gp2"
