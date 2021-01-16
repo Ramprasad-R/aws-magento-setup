@@ -6,6 +6,7 @@ resource "aws_s3_bucket" "media-bucket" {
   tags = {
     Name = "media-bucket"
   }
+  force_destroy = true
   cors_rule {
     allowed_headers = ["*"]
     allowed_methods = ["PUT", "POST", "GET", "HEAD", "DELETE"]
@@ -46,6 +47,7 @@ resource "aws_s3_bucket" "static-bucket" {
   tags = {
     Name = "static-bucket"
   }
+  force_destroy = true
   cors_rule {
     allowed_headers = ["*"]
     allowed_methods = ["PUT", "POST", "GET", "HEAD", "DELETE"]
