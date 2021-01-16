@@ -46,7 +46,6 @@ s/{{ base_url_domain }}/${base_url_domain}/g;" /tmp/env.php.j2 > /var/www/html/m
 
 /var/www/html/magento/bin/magento indexer:reindex catalogsearch_fulltext
 /var/www/html/magento/bin/magento cache:clean
-/var/www/html/magento/bin/magento cache:flush
 rm -rf /var/www/html/magento/var/cache/*
 rm -rf /var/www/html/magento/var/generation/*
 
