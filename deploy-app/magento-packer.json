@@ -6,11 +6,13 @@
   },
   "builders": [
     {
+      "vpc_id": "{{user `magento_vpc_id`}}",
+      "subnet_id": "{{user `magento_public_subnet`}}",
       "type": "amazon-ebs",
       "access_key": "{{user `aws_access_key`}}",
       "secret_key": "{{user `aws_secret_key`}}",
       "region": "{{user `aws_region`}}",
-      "source_ami": "ami-0502e817a62226e03",
+      "source_ami": "ami-0a91cd140a1fc148a",
       "instance_type": "t2.medium",
       "ssh_username": "ubuntu",
       "ami_name": "magento-v1-{{timestamp}}"
@@ -28,7 +30,23 @@
       "environment_vars": [
         "USER_NAME={{user `USER_NAME`}}",
         "PASSWORD={{user `PASSWORD`}}",
-        "base_url={{user `base_url`}}"
+        "ARTIFACT_USER={{user `ARTIFACT_USER`}}",
+        "ARTIFACT_PASSWORD={{user `ARTIFACT_PASSWORD`}}",
+        "APP_ARTIFACT_URL={{user `APP_ARTIFACT_URL`}}",
+        "mysql_user={{user `mysql_user`}}",
+        "mysql_password={{user `mysql_password`}}",
+        "mysql_db={{user `mysql_db`}}",
+        "base_url={{user `base_url`}}",
+        "base_url_domain={{user `base_url_domain`}}",
+        "elastic_search_endpoint={{user `elastic_search_endpoint`}}",
+        "jump_server={{user `jump_server`}}",
+        "media_base_url={{user `media_base_url`}}",
+        "mysql_host={{user `mysql_host`}}",
+        "redis_port={{user `redis_port`}}",
+        "redis_server={{user `redis_server`}}",
+        "static_base_url={{user `static_base_url`}}",
+        "media_bucket_name={{user `media_bucket_name`}}",
+        "static_bucket_name={{user `static_bucket_name`}}"
       ],
       "execute_command": "{{ .Vars }} sudo -E sh '{{ .Path }}'",
       "pause_before": "10s"

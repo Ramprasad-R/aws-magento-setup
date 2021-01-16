@@ -7,9 +7,9 @@ data "template_file" "shell-script-jumpserver" {
     SQL_ARTIFACT_URL  = var.SQL_ARTIFACT_URL
     RDS_USERNAME      = var.RDS_USERNAME
     RDS_PASSWORD      = var.RDS_PASSWORD
-    base_url = "https://${aws_route53_record.webapp.fqdn}/"
-    base_static_url = "https://${aws_route53_record.cdn-static-domain.fqdn}/"
-    base_media_url = "https://${aws_route53_record.cdn-media-domain.fqdn}/"
+    base_url          = "https://${aws_route53_record.webapp.fqdn}/"
+    base_static_url   = "https://${aws_route53_record.cdn-static-domain.fqdn}/"
+    base_media_url    = "https://${aws_route53_record.cdn-media-domain.fqdn}/"
   }
 }
 

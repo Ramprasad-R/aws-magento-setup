@@ -36,3 +36,4 @@ override.tf.json
 **env*
 !**env.php.j2
 **infra.json
+**app.json

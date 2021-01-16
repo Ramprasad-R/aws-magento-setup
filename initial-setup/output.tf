@@ -33,3 +33,19 @@ output "mysql_host" {
 output "jump_server" {
   value = aws_instance.jump-server.public_ip
 }
+
+output "magento_vpc_id" {
+  value = aws_vpc.magento.id
+}
+
+output "magento_public_subnet" {
+  value = aws_subnet.magento-public-1.id
+}
+
+output "media_bucket_name" {
+  value = aws_s3_bucket.media-bucket.id
+}
+
+output "static_bucket_name" {
+  value = aws_s3_bucket.static-bucket.id
+}

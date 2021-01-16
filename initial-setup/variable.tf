@@ -60,7 +60,7 @@ variable "SQL_ARTIFACT_URL" {}
 variable "AMIS" {
   type = map(string)
   default = {
-    eu-central-1 ="ami-0502e817a62226e03"
-    us-east-2 = "ami-0a91cd140a1fc148a"
+    eu-central-1 = "ami-0502e817a62226e03"
+    us-east-2    = "ami-0a91cd140a1fc148a"
   }
 }
