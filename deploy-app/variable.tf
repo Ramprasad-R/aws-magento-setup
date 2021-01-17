@@ -9,3 +9,6 @@ variable "private_subnet_2" {}
 variable "private_subnet_3" {}
 variable "target_group_arn" {}
 variable "magento_instance_role" {}
+variable "INSTANCE_TYPE" {}
+variable "MIN_SIZE" {}
+variable "MAX_SIZE" {}

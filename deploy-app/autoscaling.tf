@@ -1,7 +1,7 @@
 resource "aws_launch_configuration" "magento-launchconfig" {
   name_prefix     = "magento-launchconfig-"
   image_id        = var.MAGENTO_INSTANCE_AMI
-  instance_type   = "t3a.medium"
+  instance_type   = var.INSTANCE_TYPE
   key_name        = var.ssh_key_name
   security_groups = [var.magento_ec2_sg]
   iam_instance_profile = var.magento_instance_role
@@ -18,14 +18,14 @@ resource "aws_autoscaling_group" "magento-autoscaling" {
   name                      = "magento-autoscaling"
   vpc_zone_identifier       = [var.private_subnet_1, var.private_subnet_2, var.private_subnet_3]
   launch_configuration      = aws_launch_configuration.magento-launchconfig.name
-  min_size                  = 1
-  max_size                  = 2
+  min_size                  = var.MIN_SIZE
+  max_size                  = var.MAX_SIZE
   health_check_grace_period = 300
   health_check_type         = "ELB"
   force_delete              = true
   tag {
     key                 = "Name"
-    value               = "Magento Ec2 instance"
+    value               = "Magento ASG Ec2 instance"
     propagate_at_launch = true
   }
   lifecycle {
