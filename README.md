@@ -12,7 +12,7 @@
 - Create an Elastic search accessible inside the VPC.
 - Create a IAM policy for EC2 to access the media and static s3 bucket
 - Create a mysql RDS instance in private subnets.
-- Create a jump server in the pubic subnet to access resources in private subnet.
+- Create a jump server in the public subnet to access resources in private subnet.
 - Create required security groups for all the resources.
 - Pass on created infra details to downstream process
 - Packer will build an AMI with all the magento production ready code and update the created infra details. New AMI details will be passed on to deploy-app
