@@ -49,6 +49,7 @@ s/{{ base_url_domain }}/${base_url_domain}/g;" /tmp/env.php.j2 > /var/www/html/m
 rm -rf /var/www/html/magento/var/cache/*
 rm -rf /var/www/html/magento/var/generation/*
 
+echo "loaderio-97639467c8b7f25a95e1a39376e86ebb" > /var/www/html/magento/loaderio-97639467c8b7f25a95e1a39376e86ebb.txt
 chown -R :www-data /var/www/html/magento
 
 rm -rf /var/www/html/magento.tar.gz
