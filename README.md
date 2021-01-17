@@ -3,23 +3,23 @@
 ## What this project is about
 
 - Terraform cloudformation template to create a AWS infrastructure for the architecture shown below.
-- Create a VPC with private and public supnets on all availability zone.
+- Create a VPC with private and public subnets on all availability zones.
 - Create a NAT, IGW, route table for all the subnets
-- Create a s3 buckets for mangento static and media files.
+- Create S3 buckets for magento static and media files.
 - Create a CDN for s3 buckets and create a route53 alias A record.
 - Create a ALB, Listener target group and route52 alias A record.
 - Create a Redis Elasticache accessible inside the VPC.
-- Create a Elastic search accessible inside the VPC.
+- Create an Elastic search accessible inside the VPC.
 - Create a IAM policy for EC2 to access the media and static s3 bucket
 - Create a mysql RDS instance in private subnets.
-- Create a jumpserver in pubic subnet to access resources in private subnet.
-- Create required security group all the resources.
+- Create a jump server in the pubic subnet to access resources in private subnet.
+- Create required security groups for all the resources.
 - Pass on created infra details to downstream process
-- Packer will build a AMI with all the magento production ready code and update the created infra details. New AMI details will be passed on to deploy-app
-- Deploy app will create a lauch config and autoscaling group.
-- Created the ASG policy and attach the autoscaling group to the target group created earlier.
+- Packer will build an AMI with all the magento production ready code and update the created infra details. New AMI details will be passed on to deploy-app
+- Deploy app will create a launch config and autoscaling group.
+- Created the ASG policy and attached the autoscaling group to the target group created earlier.
 
-* Average monthly budget depends on size of intance we select. For t3a.medium instance average montly cost comes around €250.
+* Average monthly budget depends on the size of instance we select. For t3a.medium instance average monthly cost comes around €250.
 
 ## Architecture
 
@@ -29,7 +29,7 @@
 
 ![Budget](./budget.png)
 
-## Predeployment Activity
+## Pre Deployment Activity
 
 Install terraform and packer
 
