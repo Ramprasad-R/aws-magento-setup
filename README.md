@@ -2,7 +2,7 @@
 
 ## What this project is about
 
-- Cloudformation template to create a AWS infrastructure for the architecture shown below.
+- Terraform cloudformation template to create a AWS infrastructure for the architecture shown below.
 - Create a VPC with private and public supnets on all availability zone.
 - Create a NAT, IGW, route table for all the subnets
 - Create a s3 buckets for mangento static and media files.
@@ -32,6 +32,8 @@
 ## Predeployment Activity
 
 Install terraform and packer
+
+This terraform template assumes you already have hosted zone added in route53 and have the required ssl certificate for domain and cdn(in us-east-1 region)
 
 In pre-build-custom-ami directory
 
